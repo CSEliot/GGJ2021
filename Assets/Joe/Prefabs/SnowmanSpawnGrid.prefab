@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1938976321744794188
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 84907976492374497, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84907976492374497, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84907976492374497, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84907976492374497, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84907976492374497, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 84907976492374497, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84907976492374497, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84907976492374497, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84907976492374497, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84907976492374497, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 84907976492374497, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: prefabsToSpawn.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: prefabsToSpawn.Array.data[0]
+      value: 
+      objectReference: {fileID: 9003787882963865681, guid: bcb18e7270c504d4083cba9678d2ce0e,
+        type: 3}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: prefabsToSpawn.Array.data[1]
+      value: 
+      objectReference: {fileID: 6933180367265841960, guid: 688db638e857f0d49be7a2f2a2f2b863,
+        type: 3}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: prefabsToSpawn.Array.data[2]
+      value: 
+      objectReference: {fileID: 1305128219040329064, guid: f555ff311c1c857489313b35d2d68516,
+        type: 3}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: prefabsToSpawn.Array.data[3]
+      value: 
+      objectReference: {fileID: 7964987512813293593, guid: bf53af9663278dc49bd7f5a086cc79b1,
+        type: 3}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: prefabsToSpawn.Array.data[4]
+      value: 
+      objectReference: {fileID: 5474733746364662691, guid: ce7f0135440f4c0419425b5f5987cb67,
+        type: 3}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: prefabsToSpawn.Array.data[5]
+      value: 
+      objectReference: {fileID: 4839930566061625680, guid: 244887d7130112e4bb7b316f2ba9898b,
+        type: 3}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: prefabsToSpawn.Array.data[6]
+      value: 
+      objectReference: {fileID: 1496076946717488970, guid: 6067c92eaab78d84fa740f3f68149c4d,
+        type: 3}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: numbersOfPrefabsToSpawn.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: numbersOfPrefabsToSpawn.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: numbersOfPrefabsToSpawn.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: numbersOfPrefabsToSpawn.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: numbersOfPrefabsToSpawn.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: numbersOfPrefabsToSpawn.Array.data[4]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: numbersOfPrefabsToSpawn.Array.data[5]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524078142567351079, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: numbersOfPrefabsToSpawn.Array.data[6]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910879526370005725, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34,
+        type: 3}
+      propertyPath: m_Name
+      value: SnowmanSpawnGrid
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d9f0ef3d1bc30b8428a3fa578f7a6b34, type: 3}
