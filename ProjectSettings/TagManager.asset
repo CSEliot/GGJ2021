@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PhotonArenaManager
   - CBUG
+  - Game
   - Katamari
   layers:
   - Default
