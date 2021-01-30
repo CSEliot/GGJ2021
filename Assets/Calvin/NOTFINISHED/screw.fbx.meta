@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 96f24586539d5d44db28f5849e399fd7
+guid: 35ce5e01263d7064ba54782b4f4d7079
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: snow
-    second: {fileID: 2100000, guid: 4e8970f12f9aee449a4ef3bc16978dd4, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
