@@ -40,8 +40,8 @@ public class ControlPaddles : MonoBehaviour
 
         if (isLeftPaddleRotating)
         {
-            if (leftRotateOut && leftPaddleRot.transform.eulerAngles.z >= degreesToRotate) { leftRotateOut = false; }
-            else if (!leftRotateOut && (leftPaddleRot.transform.eulerAngles.z <= 0.0f || (leftPaddleRot.transform.eulerAngles.z > 100.0f && leftPaddleRot.transform.eulerAngles.z <= 360.0f)))
+            if (leftRotateOut && leftPaddleRot.transform.localEulerAngles.z >= degreesToRotate) { leftRotateOut = false; }
+            else if (!leftRotateOut && (leftPaddleRot.transform.localEulerAngles.z <= 0.0f || (leftPaddleRot.transform.localEulerAngles.z > 100.0f && leftPaddleRot.transform.localEulerAngles.z <= 360.0f)))
             {
                 leftRotateOut = true;
                 isLeftPaddleRotating = false;
@@ -51,20 +51,20 @@ public class ControlPaddles : MonoBehaviour
                 if (leftRotateOut)
                 {
                     rotation = Quaternion.Euler(0, 180, degreesToRotate);
-                    leftPaddleRot.transform.rotation = Quaternion.RotateTowards(leftPaddleRot.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+                    leftPaddleRot.transform.localRotation = Quaternion.RotateTowards(leftPaddleRot.transform.localRotation, rotation, rotationSpeed * Time.deltaTime);
                 }
                 else
                 {
                     rotation = Quaternion.Euler(0, 180, 0);
-                    leftPaddleRot.transform.rotation = Quaternion.RotateTowards(leftPaddleRot.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+                    leftPaddleRot.transform.localRotation = Quaternion.RotateTowards(leftPaddleRot.transform.localRotation, rotation, rotationSpeed * Time.deltaTime);
                 }
             }
         }
         if (isRightPaddleRotating)
         {
 
-            if (rightRotateOut && rightPaddleRot.transform.eulerAngles.z >= degreesToRotate) { rightRotateOut = false; }
-            else if (!rightRotateOut && (rightPaddleRot.transform.eulerAngles.z <= 0.0f || (rightPaddleRot.transform.eulerAngles.z > 100.0f && rightPaddleRot.transform.eulerAngles.z <= 360.0f)))
+            if (rightRotateOut && rightPaddleRot.transform.localEulerAngles.z >= degreesToRotate) { rightRotateOut = false; }
+            else if (!rightRotateOut && (rightPaddleRot.transform.localEulerAngles.z <= 0.0f || (rightPaddleRot.transform.localEulerAngles.z > 100.0f && rightPaddleRot.transform.localEulerAngles.z <= 360.0f)))
             {
                 rightRotateOut = true;
                 isRightPaddleRotating = false;
@@ -73,11 +73,11 @@ public class ControlPaddles : MonoBehaviour
             {
                 if (rightRotateOut) {
                     rotation = Quaternion.Euler(0, 0, degreesToRotate);
-                    rightPaddleRot.transform.rotation = Quaternion.RotateTowards(rightPaddleRot.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+                    rightPaddleRot.transform.localRotation = Quaternion.RotateTowards(rightPaddleRot.transform.localRotation, rotation, rotationSpeed * Time.deltaTime);
                 }
                 else {
                     rotation = Quaternion.Euler(0, 0, 0);
-                    rightPaddleRot.transform.rotation = Quaternion.RotateTowards(rightPaddleRot.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+                    rightPaddleRot.transform.localRotation = Quaternion.RotateTowards(rightPaddleRot.transform.localRotation, rotation, rotationSpeed * Time.deltaTime);
                 }
             }
         }
