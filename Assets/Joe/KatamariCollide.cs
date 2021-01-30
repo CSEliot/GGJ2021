@@ -5,15 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class KatamariCollide : MonoBehaviour
 {
-
     public Rigidbody rigidbody;
-    bool hasJoint;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        hasJoint = false;
     }
 
     // Update is called once per frame
@@ -22,14 +19,19 @@ public class KatamariCollide : MonoBehaviour
         
     }
 
-    // When a collision is happening, affix the two objects together if they are katamari
+    // When a collision is happening, affix the two objects together if they are katamari tagged
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<Rigidbody>() != null && !hasJoint && collision.gameObject.tag == "Katamari")
+        bool addComp = true;
+
+        foreach (FixedJoint joint in gameObject.GetComponents<FixedJoint>())
         {
-            gameObject.AddComponent<FixedJoint>();
-            gameObject.GetComponent<FixedJoint>().connectedBody = collision.gameObject.GetComponent<Rigidbody>();
-            hasJoint = true;
+            if (joint.connectedBody == collision.gameObject.GetComponent<Rigidbody>()) { addComp = false; break; }
+        }
+
+        if (collision.gameObject.GetComponent<Rigidbody>() != null && addComp && collision.gameObject.tag == "Katamari")
+        {
+            gameObject.AddComponent<FixedJoint>().connectedBody = collision.gameObject.GetComponent<Rigidbody>();
         }
     }
 }
