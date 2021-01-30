@@ -521,7 +521,7 @@ InputManager:
     m_Name: Down
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: left
+    negativeButton: 
     positiveButton: down
     altNegativeButton: 
     altPositiveButton: s
