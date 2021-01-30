@@ -6,31 +6,19 @@ public class TableController : MonoBehaviour
 {
 
     public float MaxButtonStrength = 6;
+
+    public float TableResistance = 1;
     public int MaxPressesPerSecond = 10;
 
     public float MaxForwardRotation = 15;
     public float MaxSideRotation = 15;
 
-    float _sideInput = 0;
-    float _forwardInput = 0;
+    int _sideInput = 0;
+    int _forwardInput = 0;
     float _rotForwardBack = 0;
     float _rotSideToSide = 0;
 
-    int _rightButtonPressesPerSecond;
-    int _leftButtonPressesPerSecond;
-    int _forwardButtonPressesPerSecond;
-    int _backButtonPressesPerSecond;
-
-    float _rightButtonPressesPerSecondRatio;
-    float _leftButtonPressesPerSecondRatio;
-    float _forwardButtonPressesPerSecondRatio;
-    float _backButtonPressesPerSecondRatio;
-
-    int[] _rightButtonPressesPerSecondOver10 = new int[10];
-    int[] _leftButtonPressesPerSecondOver10 = new int[10];
-    int[] _forwardButtonPressesPerSecondOver10 = new int[10];
-    int[] _backButtonPressesPerSecondOver10 = new int[10];
-
+    
 
     // Start is called before the first frame update
     void Start()
@@ -41,12 +29,25 @@ public class TableController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _sideInput = Input.GetAxis("Horizontal")*-1; // Z positive rotation rotates counter-clockwise???
-        _forwardInput = Input.GetAxis("Vertical");
+        _sideInput = 0;
+        _sideInput += Input.GetButtonDown("Right") ? -1 : 0; // Z positive rotation rotates counter-clockwise???
+        _sideInput += Input.GetButtonDown("Left") ? 1 : 0; // Z positive rotation rotates counter-clockwise???
+        _forwardInput = 0;
+        _forwardInput += Input.GetButtonDown("Up") ? 1 : 0;
+        _forwardInput += Input.GetButtonDown("Down") ? -1 : 0;
     }
 
     private void FixedUpdate()
     {
+
+        if (_rotForwardBack > 0)
+            _rotForwardBack += -1 * TableResistance;
+        if (_rotForwardBack < 0)
+            _rotForwardBack += 1 * TableResistance;
+        if (_rotSideToSide > 0)
+            _rotSideToSide += -1 * TableResistance;
+        if (_rotSideToSide < 0)
+            _rotSideToSide += 1 * TableResistance;
 
         //GetComponent<Rigidbody>().isKinematic = true;
         CBUG.Do("PRINT");
