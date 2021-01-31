@@ -126,37 +126,42 @@ public class Game : MonoBehaviour
                     CBUG.Do("SETUP ROOM");
                 } else if (_PM.IsHost == false)
                 {
-                    //CBUG.Do("Sync Table!");
-                    float xRot = 0;
-                    float zRot = 0;
-                    if(_PM.GetData("TableRotX") != null)
-                    {
-                        xRot = (float) _PM.GetData("TableRotX");
-                    }
-                    if (_PM.GetData("TableRotZ") != null)
-                    {
-                        zRot = (float)_PM.GetData("TableRotZ");
-                    }
+                    ////CBUG.Do("Sync Table!");
+                    //float xRot = 0;
+                    //float zRot = 0;
+                    //if(_PM.GetData("TableRotX") != null)
+                    //{
+                    //    xRot = (float) _PM.GetData("TableRotX");
+                    //}
+                    //if (_PM.GetData("TableRotZ") != null)
+                    //{
+                    //    zRot = (float)_PM.GetData("TableRotZ");
+                    //}
                     //CBUG.Do("WHY x " + xRot + " Z " + zRot);
-                    Table.transform.rotation = Quaternion.Euler(xRot, 0f, zRot);
-                    TableController._rotForwardBack = xRot;
-                    TableController._rotSideToSide = zRot;
-                    if (_PM.GetData("TableRotX") == null || _PM.GetData("TableRotZ") == null)
-                    {
-                        //CBUG.Do("WHY");
-                        Table.transform.rotation = Quaternion.Euler(0, 0, 0);
-                    } 
+                    //Table.transform.rotation = Quaternion.Euler(xRot, 0f, zRot);
+                    //TableController._rotForwardBack = xRot;
+                    //TableController._rotSideToSide = zRot; --t
+                    //if (_PM.GetData("TableRotX") == null || _PM.GetData("TableRotZ") == null)
+                    //{
+                    //    //CBUG.Do("WHY");
+                    //    Table.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    //}  --t
                 }
             }
         }
         
         if(GameState == _GameState.Live)
         {
-            if(_PM.CurrentServerUserDepth == PhotonArenaManager.ServerDepthLevel.InRoom && _PM.IsHost)
+            //CBUG.Do("Owner: " + (Table.GetComponent<PhotonView>().AmOwner ? 1 : 0));
+            if(_PM.IsHost && Table.GetComponent<PhotonView>().AmOwner == false)
             {
-                _PM.SaveData("TableRotX", Table.transform.rotation.eulerAngles.x);
-                _PM.SaveData("TableRotZ", Table.transform.rotation.eulerAngles.z);
-                //CBUG.Do("Saving rots x" + Table.transform.rotation.eulerAngles.x);
+                Table.GetComponent<PhotonView>().TransferOwnership(_PM.GetLocalPlayerID());
+            }
+            if (_PM.CurrentServerUserDepth == PhotonArenaManager.ServerDepthLevel.InRoom && _PM.IsHost)
+            {
+                //_PM.SaveData("TableRotX", Table.transform.rotation.eulerAngles.x);--t
+                //_PM.SaveData("TableRotZ", Table.transform.rotation.eulerAngles.z);--t
+                //CBUG.Do("Saving rots x" + Table.transform.rotation.eulerAngles.x); 
                 //CBUG.Do("Saving rots z" + Table.transform.rotation.eulerAngles.z);
             }
 
@@ -252,6 +257,11 @@ public class Game : MonoBehaviour
                                             GameRespawn.transform.position.z + randAdd);
         GameObj.transform.position = respawnPos;
         GameObj.GetComponent<Rigidbody>().isKinematic = false;
+        GameObj.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        foreach (Rigidbody child in GameObj.transform.GetComponentsInChildren<Rigidbody>())
+        {
+            child.velocity = Vector3.zero;
+        }
     }
     
     public void SpawnWinCons()
@@ -282,7 +292,7 @@ public class Game : MonoBehaviour
         int i = 0;
         foreach (GameObject WinObj in WinConditions)
         {
-            EndScreenMan.SnowManPieces.Add(WinObj.transform);
+            EndScreenMan.SnowManPieces.Add(WinObj);
             i++;
         }
         _PM.GetRoom().IsOpen = false;
@@ -351,7 +361,10 @@ public class Game : MonoBehaviour
         GameObject tempArrow = GameObject.Instantiate(Arrow, LeftArrowSpawn.transform);
         tempArrow.GetComponentInChildren<Text>().text = Username;
         Destroy(tempArrow, ArrowLifeTime);
-        TableController.QueueLeftPush();
+        if(_PM.IsHost)
+        {
+            TableController.QueueLeftPush();
+        }
     }
 
     [PunRPC]
@@ -360,7 +373,9 @@ public class Game : MonoBehaviour
         GameObject tempArrow = GameObject.Instantiate(Arrow, RightArrowSpawn.transform);
         tempArrow.GetComponentInChildren<Text>().text = Username;
         Destroy(tempArrow, ArrowLifeTime);
-        TableController.QueueRightPush();
+        if (_PM.IsHost) {
+            TableController.QueueRightPush();
+        }
     }
 
     [PunRPC]
@@ -369,7 +384,10 @@ public class Game : MonoBehaviour
         GameObject tempArrow = GameObject.Instantiate(Arrow, ForwardArrowSpawn.transform);
         tempArrow.GetComponentInChildren<Text>().text = Username;
         Destroy(tempArrow, ArrowLifeTime);
-        TableController.QueueUpPush();
+        if(_PM.IsHost)
+        {
+            TableController.QueueUpPush();
+        }
     }
 
     [PunRPC]
@@ -378,6 +396,9 @@ public class Game : MonoBehaviour
         GameObject tempArrow = GameObject.Instantiate(Arrow, BackArrowSpawn.transform);
         tempArrow.GetComponentInChildren<Text>().text = Username;
         Destroy(tempArrow, ArrowLifeTime);
-        TableController.QueueDownPush();
+        if(_PM.IsHost)
+        {
+            TableController.QueueDownPush();
+        }
     }
 }

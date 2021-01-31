@@ -9,6 +9,10 @@ BUT arrows do spawn
 IF HAS PARENT DO NOT TP
 IF TP SET CHILDREN TO KINEMATI
 
+P1 can move P2 but not P3
+P2 can move P1 but not P3
+P3 can move P1 and P2 but P3
+
 
 DONE Spawn heads on room creation and synced
 DONE Sync table

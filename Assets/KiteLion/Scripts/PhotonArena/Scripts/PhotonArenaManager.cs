@@ -80,7 +80,8 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
         }
 
         CBUG.Do("Connecting!");
-        PhotonNetwork.GameVersion = "SnowmanGame";
+
+        PhotonNetwork.GameVersion = "SnowmanGame" + SceneManager.GetActiveScene().name;//--t
 
         PhotonNetwork.NetworkingClient.AppId = PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime;
 

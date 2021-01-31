@@ -23,10 +23,12 @@ public class TableController : MonoBehaviour
     Queue<int> UpPushQueue;
     Queue<int> DownPushQueue;
 
+    PhotonArenaManager _PM;
 
     // Start is called before the first frame update
     void Start()
     {
+        _PM = PhotonArenaManager.Instance;
         LeftPushQueue   = new Queue<int>();
         RightPushQueue  = new Queue<int>();
         UpPushQueue     = new Queue<int>(); 
@@ -86,8 +88,10 @@ public class TableController : MonoBehaviour
         _rotForwardBack = _rotForwardBack + _forwardInput * MaxButtonStrength;
         _rotSideToSide = _rotSideToSide + _sideInput * MaxButtonStrength;
 
-
-        GetComponent<Rigidbody>().rotation = Quaternion.Euler(new Vector3(_rotForwardBack, 0, _rotSideToSide));
+        if (_PM.IsHost)
+        {
+            GetComponent<Rigidbody>().rotation = Quaternion.Euler(new Vector3(_rotForwardBack, 0, _rotSideToSide));
+        }
 
         //GetComponent<Rigidbody>().isKinematic = false;
     }
