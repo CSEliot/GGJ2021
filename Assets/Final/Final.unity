@@ -1077,6 +1077,103 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 244887d7130112e4bb7b316f2ba9898b, type: 3}
+--- !u!1001 &642525357
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8404609498891963514, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404609498891963514, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404609498891963514, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404609498891963514, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404609498891963514, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404609498891963514, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404609498891963514, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404609498891963514, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404609498891963514, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404609498891963514, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404609498891963514, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404609498891963515, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+        type: 3}
+      propertyPath: m_Name
+      value: defeatScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404609498891963515, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404609499766566168, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+        type: 3}
+      propertyPath: m_Depth
+      value: 99
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a6cdd470207d6bc48ac43d66ba1100e3, type: 3}
+--- !u!114 &642525358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7889149037192895380, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 642525357}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642525359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c740a582788b93f47a86f1727d639bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &642525359 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8404609498891963515, guid: a6cdd470207d6bc48ac43d66ba1100e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 642525357}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &664142061
 GameObject:
   m_ObjectHideFlags: 0
@@ -2572,6 +2669,7 @@ MonoBehaviour:
     type: 3}
   Santa: {fileID: 1024186742}
   EndScreenMan: {fileID: 1151948917}
+  EndScreenManFAILURE: {fileID: 642525358}
   ActivateSantaSeconds: 20
   canWin: 0
   MyPhotonView: {fileID: 1138733100}
@@ -2579,6 +2677,7 @@ MonoBehaviour:
   SUPERMaxDistanceBeforeRespawn: 200
   MaxBelowDistanceBeforeRespawn: 2
   GameWinDisplay: {fileID: 811627363}
+  GameFAILDisplay: {fileID: 642525359}
   GameWinSnowmanPosition: {fileID: 48787550}
   SnowmanHead: {fileID: 707167951}
   Arrow: {fileID: 3665203600741799156, guid: 672469edae3a65d498599cd0b296fa9a, type: 3}
@@ -4374,11 +4473,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4cd9b367d82a92b4aa716e41764387af, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.699
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
