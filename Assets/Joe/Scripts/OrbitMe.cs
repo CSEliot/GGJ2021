@@ -26,6 +26,6 @@ public class OrbitMe : MonoBehaviour
 
         myRotation.Set(x, y, 0f);
         gameObject.transform.rotation = Quaternion.Euler(myRotation);//Rotate(myRotation);
-        CBUG.Do("ROTATING");
+        //CBUG.Do("ROTATING");
     }
 }

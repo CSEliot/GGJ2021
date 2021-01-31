@@ -32,6 +32,15 @@ public class KatamariCollide : MonoBehaviour
         if (collision.gameObject.GetComponent<Rigidbody>() != null && addComp && collision.gameObject.tag == "Katamari")
         {
             gameObject.AddComponent<FixedJoint>().connectedBody = collision.gameObject.GetComponent<Rigidbody>();
+
+            if (!collision.gameObject.name.Contains("snow"))
+            {
+                if (collision.gameObject.GetComponent<MeshCollider>())
+                {
+                    Debug.Log("triggered");
+                    collision.gameObject.GetComponent<MeshCollider>().isTrigger = true;
+                }
+            }
         }
     }
 }
