@@ -5,7 +5,7 @@ using TMPro;
 public class EndScreenManager : MonoBehaviour
 {
 
-    public List<Transform> SnowManPieces;
+    public List<GameObject> SnowManPieces;
     GameObject centerHolder;
     public Transform snowManSlot;
 
@@ -43,14 +43,14 @@ public class EndScreenManager : MonoBehaviour
         
     }
 
-    Vector3 FindCenterPoint(List<Transform> allPoints)
+    Vector3 FindCenterPoint(List<GameObject> allPoints)
     {
-        Transform[] pointArray = allPoints.ToArray();
+        GameObject[] pointArray = allPoints.ToArray();
         Vector3 centerPoint = new Vector3();
 
         for(int i = 0; i < pointArray.Length; i++)
         {
-            centerPoint = centerPoint + pointArray[i].position;
+            centerPoint = centerPoint + pointArray[i].transform.position;
         }
 
         centerPoint = centerPoint / pointArray.Length;
@@ -59,11 +59,11 @@ public class EndScreenManager : MonoBehaviour
     }
 
 
-    public void ParentList(List<Transform> allPoints, Transform parentTransform)
+    public void ParentList(List<GameObject> allPoints, Transform parentTransform)
     {
-        foreach(Transform point in allPoints)
+        foreach(GameObject point in allPoints)
         {
-            point.SetParent(parentTransform);
+            point.transform.SetParent(parentTransform);
         }
     }
 
