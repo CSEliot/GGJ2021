@@ -537,6 +537,7 @@ GameObject:
   - component: {fileID: 7694223884927013370}
   - component: {fileID: 6754450850355044196}
   - component: {fileID: 2938419856339717947}
+  - component: {fileID: 9004558103491680369}
   m_Layer: 0
   m_Name: tentacle
   m_TagString: Untagged
@@ -593,6 +594,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spinTransfrom: {x: 0, y: 15, z: 0}
+--- !u!114 &9004558103491680369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7029150859981671232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed488064829d9e4f9eba6f59cb8c0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burn: 0
+  animatorsToAffect: []
+  useList: 1
+  ignitionTargets:
+  - targetObject: {fileID: 6446568746630146057}
+    scaleModifier: 1
+    lifetimeModifier: 1
+  fireSettings:
+    lightUp: 0
+    lit: 0
+    extinguished: 0
+    simSpace: 1
+    shapeEmittPoints: 0
+    particleMaterial: {fileID: 2100000, guid: 5414faa8a17506448b08bfe8695017a1, type: 2}
+    xSprite: 4
+    ySprite: 2
+    startLifeTime: 0.5
+    startSize: 0.0005
+    emissionRate: 100
+    maxParticles: 1000
+    gravity: 0.1
 --- !u!1 &7280606910387908107
 GameObject:
   m_ObjectHideFlags: 0
