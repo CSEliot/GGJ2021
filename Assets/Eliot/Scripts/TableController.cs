@@ -18,23 +18,46 @@ public class TableController : MonoBehaviour
     float _rotForwardBack = 0;
     float _rotSideToSide = 0;
 
-    
+    Queue<int> LeftPushQueue;
+    Queue<int> RightPushQueue;
+    Queue<int> UpPushQueue;
+    Queue<int> DownPushQueue;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        LeftPushQueue   = new Queue<int>();
+        RightPushQueue  = new Queue<int>();
+        UpPushQueue     = new Queue<int>(); 
+        DownPushQueue   = new Queue<int>(); 
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() 
     {
         _sideInput = 0;
-        _sideInput += Input.GetButtonDown("Right") ? -1 : 0; // Z positive rotation rotates counter-clockwise???
-        _sideInput += Input.GetButtonDown("Left") ? 1 : 0; // Z positive rotation rotates counter-clockwise???
+        if (RightPushQueue.Count > 0)
+        {
+            RightPushQueue.Dequeue();
+            _sideInput += -1; // Z positive rotation rotates counter-clockwise???
+        }
+        if (LeftPushQueue.Count > 0)
+        {
+            LeftPushQueue.Dequeue();
+            _sideInput += 1; // Z positive rotation rotates counter-clockwise???
+        }
         _forwardInput = 0;
-        _forwardInput += Input.GetButtonDown("Up") ? 1 : 0;
-        _forwardInput += Input.GetButtonDown("Down") ? -1 : 0;
+        if (UpPushQueue.Count > 0)
+        {
+            UpPushQueue.Dequeue();
+            _forwardInput += 1; // Z positive rotation rotates counter-clockwise???
+        }
+        if (DownPushQueue.Count > 0)
+        {
+            DownPushQueue.Dequeue();
+            _forwardInput += -1; // Z positive rotation rotates counter-clockwise???
+        }
     }
 
     private void FixedUpdate()
@@ -50,7 +73,6 @@ public class TableController : MonoBehaviour
             _rotSideToSide += 1 * TableResistance;
 
         //GetComponent<Rigidbody>().isKinematic = true;
-        CBUG.Do("PRINT");
 
         if (_forwardInput > 0 && _rotForwardBack > MaxForwardRotation)
             _forwardInput = 0;
@@ -68,5 +90,22 @@ public class TableController : MonoBehaviour
         GetComponent<Rigidbody>().rotation = Quaternion.Euler(new Vector3(_rotForwardBack, 0, _rotSideToSide));
 
         //GetComponent<Rigidbody>().isKinematic = false;
+    }
+
+    public void QueueLeftPush()
+    {
+        LeftPushQueue.Enqueue(1);
+    }
+    public void QueueRightPush()
+    {
+        RightPushQueue.Enqueue(1);
+    }
+    public void QueueDownPush()
+    {
+        DownPushQueue.Enqueue(1);
+    }
+    public void QueueUpPush()
+    {
+        UpPushQueue.Enqueue(1);
     }
 }

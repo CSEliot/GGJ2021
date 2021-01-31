@@ -230,6 +230,15 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
         needsNewRoom = true;
     }
 
+    /// <summary>
+    /// Caller Photon ID MUST == Obj Photon ID
+    /// </summary>
+    /// <param name="Obj"></param>
+    public void DestroyObject(GameObject Obj)
+    {
+        PhotonNetwork.Destroy(Obj);
+    }
+
     public GameObject SpawnObject(string resourceName) {
         if (CurrentServerUserDepth == ServerDepthLevel.Offline) {
             GameObject instance = Instantiate(Resources.Load(resourceName, typeof(GameObject)), DefaultSpawnLocation, Quaternion.Euler(Vector3.zero)) as GameObject;

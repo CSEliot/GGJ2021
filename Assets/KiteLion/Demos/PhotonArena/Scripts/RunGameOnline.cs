@@ -33,7 +33,6 @@ public class RunGameOnline : MonoBehaviour
             if(_PM.GetData("_IsFooblesSpawned") == null || ((bool)_PM.GetData("_IsFooblesSpawned") == false)) {
 
                 _PM.SpawnObject("FoobleOnline", FooblesSpawn.transform.position, FooblesSpawn.transform.rotation);
-
                 _PM.SaveData("_IsFooblesSpawned", true);
                 _isFooblesSpawned = true;
             }

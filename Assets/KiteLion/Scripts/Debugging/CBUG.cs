@@ -13,19 +13,19 @@ using KiteLion.Legal;
 public class CBUG : MonoBehaviour, ILegal {
 
     #region Public Unity-Assigned Vars
-    private bool    _enabled                    = true;
-    private bool    _enabledForUnityLog         = true;
-    private bool    _enabledForEditor           = true;
+    public bool    _enabled                    = true;
+    public bool    _enabledForUnityLog         = true;
+    public bool    _enabledForEditor           = true;
     //private bool    _enabledForDevelopmentBuild = true; //unused
     //private bool    _enabledForReleaseBuild     = true; //unused
-    private float   _clearLineTimeInSeconds     = 10;
-    private bool    _clearNow                   = false;
+    public float   _clearLineTimeInSeconds     = 10;
+    public bool    _clearNow                   = false;
     #endregion
 
     #region Private Vars
     private Text                    _LogText;
-    private LinkedList<string>      _Lines = new LinkedList<string>();
-    private LinkedList<int>         _Cccurrences = new LinkedList<int>();
+    private LinkedList<string>      _Lines;
+    private LinkedList<int>         _Cccurrences;
     private LinkedListNode<string>  _TempLinesIter;
     private LinkedListNode<int>     _TempOccurIter;
     private bool                    _isParented;
@@ -48,8 +48,11 @@ public class CBUG : MonoBehaviour, ILegal {
     // Use this for initialization ...                                                                                                                                                                                                    *whispers* "Ganbare"
     void Awake()
     {
+        _Lines = new LinkedList<string>();
+        _Cccurrences = new LinkedList<int>();
+
         _LogText = GetComponent<Text>();
-        if (!_enabledForEditor)
+        if (_enabledForEditor == false)
             _LogText.color = new Color(0, 0, 0, 0);
         if (_clearLineTimeInSeconds == 0)
             _neverClear = true;
@@ -65,8 +68,6 @@ public class CBUG : MonoBehaviour, ILegal {
         _currentTaps = 0;
         DontDestroyOnLoad(transform.parent);
     }
-
-
 
     private CBUG( bool isTemp)
     {
