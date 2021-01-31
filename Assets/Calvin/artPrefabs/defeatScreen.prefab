@@ -737,7 +737,7 @@ PrefabInstance:
     - target: {fileID: 9062891434869315797, guid: 7d3a1e2002f56ef459fbb37dd07a16ab,
         type: 3}
       propertyPath: meanThingsToSay.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9062891434869315797, guid: 7d3a1e2002f56ef459fbb37dd07a16ab,
         type: 3}
@@ -758,6 +758,11 @@ PrefabInstance:
         type: 3}
       propertyPath: meanThingsToSay.Array.data[3]
       value: I wish I didn't throw away you'r receipt...
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062891434869315797, guid: 7d3a1e2002f56ef459fbb37dd07a16ab,
+        type: 3}
+      propertyPath: meanThingsToSay.Array.data[4]
+      value: If you can't take the cold GET OUT OF THE POLE!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d3a1e2002f56ef459fbb37dd07a16ab, type: 3}
