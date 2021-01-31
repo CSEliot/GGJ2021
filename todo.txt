@@ -1,3 +1,15 @@
+Tentacles
+Fire
+Victory Screen showing snowman pieces
+network-ize the non-snow bits
+
+HOST can receive movements but no one else
+BUT arrows do spawn
+
+IF HAS PARENT DO NOT TP
+IF TP SET CHILDREN TO KINEMATI
+
+
 DONE Spawn heads on room creation and synced
 DONE Sync table
 DONE wincon controlled by host
@@ -13,5 +25,4 @@ P2 can move P1 moves
 P1 can NOT move P2 table
 
 
-IF HAS PARENT DO NOT TP
-IF TP SET CHILDREN TO KINEMATI
+

@@ -22,6 +22,11 @@ public class KatamariCollide : MonoBehaviour
     // When a collision is happening, affix the two objects together if they are katamari tagged
     void OnCollisionEnter(Collision collision)
     {
+        if(GetComponent<Rigidbody>() == null || rigidbody == null)
+        {
+            return;
+        }   
+
         bool addComp = true;
         bool isSnowball = gameObject.name.Contains("snow");
         bool otherIsSnowball = collision.gameObject.name.Contains("snow");
@@ -42,15 +47,17 @@ public class KatamariCollide : MonoBehaviour
             if(isSnowball && otherIsSnowball && GetComponent<FixedJoint>() == null && collision.gameObject.GetComponent<FixedJoint>() == null)
             {
                 gameObject.AddComponent<FixedJoint>().connectedBody = collision.gameObject.GetComponent<Rigidbody>();
+                Destroy(Instantiate(GameObject.FindGameObjectWithTag("Game").GetComponent<Game>().GreenSphere, collision.GetContact(0).point, Quaternion.identity), 3);
                 gameObject.transform.SetParent(collision.gameObject.transform, true);
             }
 
             if(isSnowball == false && otherIsSnowball && GetComponent<FixedJoint>() == null)
             {
                 gameObject.AddComponent<FixedJoint>().connectedBody = collision.gameObject.GetComponent<Rigidbody>();
+                Destroy(Instantiate(GameObject.FindGameObjectWithTag("Game").GetComponent<Game>().GreenSphere, collision.GetContact(0).point, Quaternion.identity), 3);
                 gameObject.transform.SetParent(collision.gameObject.transform, true);
             }
-            Destroy(Instantiate(GameObject.FindGameObjectWithTag("Game").GetComponent<Game>().GreenSphere, collision.GetContact(0).point, Quaternion.identity), 3);
+
             if(rigidbody.gameObject.name.Contains("snow") == false)
             {
                 if (rigidbody.gameObject.GetComponent<MeshCollider>() != null) {

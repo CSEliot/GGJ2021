@@ -139,8 +139,8 @@ public class Game : MonoBehaviour
                     }
                     //CBUG.Do("WHY x " + xRot + " Z " + zRot);
                     Table.transform.rotation = Quaternion.Euler(xRot, 0f, zRot);
-                    TableController._rotForwardBack = zRot;
-                    TableController._rotSideToSide = xRot;
+                    TableController._rotForwardBack = xRot;
+                    TableController._rotSideToSide = zRot;
                     if (_PM.GetData("TableRotX") == null || _PM.GetData("TableRotZ") == null)
                     {
                         //CBUG.Do("WHY");
@@ -235,6 +235,11 @@ public class Game : MonoBehaviour
     {
         //don't teleport ALL parts of a join, just the snowball.
         if(GameObj.GetComponent<FixedJoint>() != null && GameObj.name.Contains("snow") == false)
+        {
+            return;
+        }
+        //if katamari has parent don't TP the child.
+        if(GameObj.transform.parent != null)
         {
             return;
         }
