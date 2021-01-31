@@ -84,6 +84,10 @@ public class Game : MonoBehaviour
         PreGameStuff.SetActive(true);
         GameWinDisplay.SetActive(false);
         
+        if(Application.isEditor == false)
+        {
+            canWin = true;
+        }
     }
 
     // Update is called once per frame
