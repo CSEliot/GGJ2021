@@ -90,7 +90,7 @@ public class TableController : MonoBehaviour
 
         if (_PM.IsHost)
         {
-            GetComponent<Rigidbody>().rotation = Quaternion.Euler(new Vector3(_rotForwardBack, 0, _rotSideToSide));
+            transform.rotation = Quaternion.Euler(new Vector3(_rotForwardBack, 0, _rotSideToSide));
         }
 
         //GetComponent<Rigidbody>().isKinematic = false;
