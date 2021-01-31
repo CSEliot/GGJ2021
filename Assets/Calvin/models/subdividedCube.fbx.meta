@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2b4a5fd5bdb77d042bd2bbc9550bd6cd
+guid: d0650fa131dbf9142aae31a2102f1a6b
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,23 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Hat
-    second: {fileID: 2100000, guid: 60c8a16c653ce27459d0ae0ec48f2d6b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: eye
-    second: {fileID: 2100000, guid: 459e59ee044d6bf49a8bbd6197de056a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: eyeBrows
-    second: {fileID: 2100000, guid: 3848be419ed0fc94a984ba8e5e9b3135, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: head
-    second: {fileID: 2100000, guid: ce17037da61fca14ab799cae8554428f, type: 2}
+      name: Material
+    second: {fileID: 2100000, guid: 4e8970f12f9aee449a4ef3bc16978dd4, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
