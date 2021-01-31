@@ -1777,7 +1777,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &811627364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2603,7 +2603,7 @@ MonoBehaviour:
   Santa: {fileID: 1024186742}
   EndScreenMan: {fileID: 1151948917}
   ActivateSantaSeconds: 20
-  canWin: 1
+  canWin: 0
   MyPhotonView: {fileID: 1138733100}
   MaxDistanceBeforeRespawn: 30
   SUPERMaxDistanceBeforeRespawn: 200
@@ -2617,7 +2617,7 @@ MonoBehaviour:
   ForwardArrowSpawn: {fileID: 91077312}
   BackArrowSpawn: {fileID: 415182938}
   GameRespawn: {fileID: 1894067966}
-  RandomRespawnRange: 40
+  RandomRespawnRange: 30
   gameWin: 0
   gameWinHeadScale: 0.1963986
   PreGameStuff: {fileID: 693562266}
@@ -3735,7 +3735,8 @@ PrefabInstance:
       propertyPath: m_Depth
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7213943281134743128, guid: 7d3a1e2002f56ef459fbb37dd07a16ab, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7d3a1e2002f56ef459fbb37dd07a16ab, type: 3}
 --- !u!4 &1675347648 stripped
 Transform:

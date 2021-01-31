@@ -11,3 +11,7 @@ DONE bumpers
 
 P2 can move P1 moves
 P1 can NOT move P2 table
+
+
+IF HAS PARENT DO NOT TP
+IF TP SET CHILDREN TO KINEMATI

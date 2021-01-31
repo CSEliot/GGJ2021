@@ -53,8 +53,9 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
     /// </summary>
     public RoomOptions RoomOptions = new RoomOptions() {
         MaxPlayers = 100,
-        CustomRoomProperties = new Hashtable() { {"GameStartTime", -1} },
-        CustomRoomPropertiesForLobby = new string[] { "GameStartTime"}
+        CustomRoomProperties = new Hashtable() { { "GameStartTime", -1 } },
+        CustomRoomPropertiesForLobby = new string[] { "GameStartTime" },
+        CleanupCacheOnLeave = false
     };
 
     private ServerDepthLevel currentServerUserDepth = ServerDepthLevel.Offline;
@@ -393,7 +394,7 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
 
     public override void OnJoinRandomFailed(short returnCode, string message) {
         CBUG.Log("Room Join failed. Creating a room ...");
-        PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 2, CleanupCacheOnLeave = false }, null);
+        PhotonNetwork.CreateRoom(null, RoomOptions, null);
     }
     #endregion
 }
