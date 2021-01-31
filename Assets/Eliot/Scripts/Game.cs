@@ -8,7 +8,10 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
+    public GameObject GreenSphere;
 
+    public bool canWin = true;
+    
     PhotonArenaManager _PM;
     public PhotonView MyPhotonView;
 
@@ -28,7 +31,7 @@ public class Game : MonoBehaviour
     public GameObject GameRespawn;
     public int RandomRespawnRange;
 
-    public GameObject[] WinConditions;
+    private List<GameObject> WinConditions;
     int _totalNeededWinConditions;
     int _currentWinConditions;
 
@@ -44,6 +47,10 @@ public class Game : MonoBehaviour
 
     public GameObject Table;
     public TableController TableController;
+
+    private int debugUnlockCount = 90;
+
+    public GameObject[] NetworkSpawnList;
 
     public enum _GameState
     {
@@ -66,27 +73,81 @@ public class Game : MonoBehaviour
         PlayerPrefs.SetInt("CBUG_ON", 1);
 
         _PM = PhotonArenaManager.Instance;
-
-        _totalNeededWinConditions = WinConditions.Length;
+        WinConditions = new List<GameObject>();
+        _totalNeededWinConditions = 2;
         PlayerPrefs.Save();
-        CBUG.Do("Sanity check Start");
-
-        
+        CBUG.Do("Sanity check Start");        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey("`"))
+        {
+            debugUnlockCount--;
+        }
+
+        //Cause Win 
+        if(debugUnlockCount < 0 && Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if(FindAndSetWinConditions() == true)
+            {
+                foreach (GameObject WinCon in WinConditions)
+                {
+                    WinCon.GetComponent<Rigidbody>().isKinematic = true;
+                    WinCon.transform.position = Vector3.zero;
+                    WinCon.GetComponent<Rigidbody>().isKinematic = false;
+                }
+            }
+        }
+
+
         if(GameState == _GameState.LoggingIn)
         {
             if(_PM.CurrentServerUserDepth == PhotonArenaManager.ServerDepthLevel.InRoom)
             {
                 GameState = _GameState.Live;
+                if(_PM.IsHost && _PM.GetData("Setup") == null)
+                {
+                    _PM.SaveData("Setup", true);
+                    SpawnWinCons();
+                    CBUG.Do("SETUP ROOM");
+                } else if (_PM.IsHost == false)
+                {
+                    //CBUG.Do("Sync Table!");
+                    float xRot = 0;
+                    float zRot = 0;
+                    if(_PM.GetData("TableRotX") != null)
+                    {
+                        xRot = (float) _PM.GetData("TableRotX");
+                    }
+                    if (_PM.GetData("TableRotZ") != null)
+                    {
+                        zRot = (float)_PM.GetData("TableRotZ");
+                    }
+                    //CBUG.Do("WHY x " + xRot + " Z " + zRot);
+                    Table.transform.rotation = Quaternion.Euler(xRot, 90f, zRot);
+                    TableController._rotForwardBack = zRot;
+                    TableController._rotSideToSide = xRot;
+                    if (_PM.GetData("TableRotX") == null || _PM.GetData("TableRotZ") == null)
+                    {
+                        //CBUG.Do("WHY");
+                        Table.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    } 
+                }
             }
         }
         
         if(GameState == _GameState.Live)
         {
+            if(_PM.CurrentServerUserDepth == PhotonArenaManager.ServerDepthLevel.InRoom && _PM.IsHost)
+            {
+                _PM.SaveData("TableRotX", Table.transform.rotation.eulerAngles.x);
+                _PM.SaveData("TableRotZ", Table.transform.rotation.eulerAngles.z);
+                //CBUG.Do("Saving rots x" + Table.transform.rotation.eulerAngles.x);
+                //CBUG.Do("Saving rots z" + Table.transform.rotation.eulerAngles.z);
+            }
+
             if (Input.GetButtonDown("Left"))
             {
                 MyPhotonView.RPC("SpawnLeftArrow", RpcTarget.All, Username);
@@ -104,9 +165,14 @@ public class Game : MonoBehaviour
                 MyPhotonView.RPC("SpawnBackArrow", RpcTarget.All, Username);
             }
 
+            //test if win
             _currentWinConditions = 0;
             foreach (GameObject snowball in GameObject.FindGameObjectsWithTag("Katamari"))
             {
+                if(FindAndSetWinConditions() == false)
+                {
+                    break;
+                }
                 foreach (GameObject WinCondition in WinConditions)
                 {
                     if (snowball.name == WinCondition.name)
@@ -128,19 +194,22 @@ public class Game : MonoBehaviour
 
             if (gameWin == false && _currentWinConditions == _totalNeededWinConditions)
             {
-                gameWin = true;
+                if(canWin && _PM.IsHost)
+                {
+                    gameWin = true;
+                }
             }
 
             if (gameWin && _hasDoneGameWin == false)
             {
                 _hasDoneGameWin = true;
-                _DoGameWin();
+                MyPhotonView.RPC("_DoGameWin", RpcTarget.All);
             }
 
             foreach(GameObject GameObj in GameObject.FindGameObjectsWithTag("Katamari"))
             {
                 float objDistance = Vector3.Distance(GameObj.transform.position, GameRespawn.transform.position);
-                
+                //CBUG.Log("DIST: " + objDistance);
                 if((GameObj.transform.position.y < MaxBelowDistanceBeforeRespawn && objDistance > MaxDistanceBeforeRespawn )
                     || objDistance > SUPERMaxDistanceBeforeRespawn)
                 {
@@ -152,7 +221,13 @@ public class Game : MonoBehaviour
 
     public void RespawnGameObj(GameObject GameObj)
     {
-        //CBUG.Log("Teleport device: " + GameObj.name);   
+        //don't teleport ALL parts of a join, just the snowball.
+        if(GameObj.GetComponent<FixedJoint>() != null && GameObj.name.Contains("snow") == false)
+        {
+            return;
+        }
+
+        //CBUG.Log("Teleport device: " + GameObj.name);
         GameObj.GetComponent<Rigidbody>().isKinematic = true;
         int randAdd = Random.Range(RandomRespawnRange/-2, RandomRespawnRange/2);
         Vector3 respawnPos = new Vector3(GameRespawn.transform.position.x + randAdd,
@@ -161,16 +236,32 @@ public class Game : MonoBehaviour
         GameObj.transform.position = respawnPos;
         GameObj.GetComponent<Rigidbody>().isKinematic = false;
     }
+    
+    public void SpawnWinCons()
+    {
+        foreach (GameObject NetSpawn in NetworkSpawnList)
+        {
+            int randAdd = Random.Range(RandomRespawnRange / -2, RandomRespawnRange / 2);
+            Vector3 spawnPos = new Vector3(GameRespawn.transform.position.x + randAdd,
+                                                GameRespawn.transform.position.y,
+                                                GameRespawn.transform.position.z + randAdd);
+            _PM.SpawnObject(NetSpawn.name, spawnPos, Quaternion.identity);
+        }
+    }
 
     public void ReloadGame()
     {
+        PhotonNetwork.Disconnect();
         int activeScene = SceneManager.GetActiveScene().buildIndex;
         //SceneManager.UnloadSceneAsync(activeScene);
         SceneManager.LoadScene(activeScene, LoadSceneMode.Single);
     }
 
-    void _DoGameWin()
+    [PunRPC]
+    public void _DoGameWin()
     {
+        _PM.GetRoom().IsOpen = false;
+        _PM.GetRoom().IsVisible = false;
         GameState = _GameState.Post;
         GameWinDisplay.SetActive(true);
         SnowmanHead.GetComponent<Rigidbody>().isKinematic = true;
@@ -190,6 +281,27 @@ public class Game : MonoBehaviour
         GameState = _GameState.LoggingIn;
         DeactivePreGameStuff();
         LogIn();
+    }
+
+    public bool FindAndSetWinConditions()
+    {
+        foreach (GameObject WinCon in GameObject.FindGameObjectsWithTag("Katamari"))
+        {
+            if (WinCon.name.Contains("snow"))
+            {
+                if(WinConditions.Contains(WinCon) == false)
+                {
+                    WinConditions.Add(WinCon);
+                }
+            }
+        }
+        if(WinConditions.Count == 3)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
     }
 
     public void DeactivePreGameStuff()
@@ -237,5 +349,4 @@ public class Game : MonoBehaviour
         Destroy(tempArrow, ArrowLifeTime);
         TableController.QueueDownPush();
     }
-
 }

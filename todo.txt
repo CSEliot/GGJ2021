@@ -1,0 +1,13 @@
+DONE Spawn heads on room creation and synced
+DONE Sync table
+DONE wincon controlled by host
+DONE set trigger of collider on non-snow
+
+DONE indicator that pieces have connected
+
+art assets
+
+bumpers
+
+P2 can move P1 moves
+P1 can NOT move P2 table

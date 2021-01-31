@@ -29,6 +29,46 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.0000001
   m_Center: {x: -0.00000020861626, y: 0, z: 0.00000023841858}
+--- !u!114 &-1048130975956669705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9003787882963865681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 1
+  m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &6775770639045305064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9003787882963865681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: -1048130975956669705}
+  - {fileID: 7634321382628097298}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!114 &7117778665265934795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,6 +82,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 0}
+--- !u!114 &7634321382628097298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9003787882963865681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 0
+  m_SynchronizeScale: 0
+  m_UseLocal: 0
 --- !u!1001 &4838628117301228514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72,7 +128,7 @@ PrefabInstance:
     - target: {fileID: 3791594854526728457, guid: e1a60f01181d11140abc29b37e5bb7e8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.09
+      value: 14.7
       objectReference: {fileID: 0}
     - target: {fileID: 3791594854526728457, guid: e1a60f01181d11140abc29b37e5bb7e8,
         type: 3}
@@ -82,7 +138,7 @@ PrefabInstance:
     - target: {fileID: 3791594854526728457, guid: e1a60f01181d11140abc29b37e5bb7e8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -19
       objectReference: {fileID: 0}
     - target: {fileID: 3791594854526728457, guid: e1a60f01181d11140abc29b37e5bb7e8,
         type: 3}
@@ -122,7 +178,7 @@ PrefabInstance:
     - target: {fileID: 4599762652056773555, guid: e1a60f01181d11140abc29b37e5bb7e8,
         type: 3}
       propertyPath: m_Name
-      value: snowBallBottom
+      value: snowBallBottom Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4599762652056773555, guid: e1a60f01181d11140abc29b37e5bb7e8,
         type: 3}

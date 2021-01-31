@@ -29,6 +29,38 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.56
   m_Center: {x: 0, y: 0.51, z: 0}
+--- !u!114 &-6284409545434250004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305128219040329064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 1
+  m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &-2956034635927740060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305128219040329064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 0
 --- !u!114 &707167953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,6 +74,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 0}
+--- !u!114 &4823752707548584404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305128219040329064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: -6284409545434250004}
+  - {fileID: -2956034635927740060}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &7440514548381689224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52,7 +108,7 @@ PrefabInstance:
     - target: {fileID: 8457403566919125216, guid: de22fea3b2beb5447bbced59f83c6b99,
         type: 3}
       propertyPath: m_Name
-      value: snowManHead 1
+      value: snowManHead 1 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8457403566919125216, guid: de22fea3b2beb5447bbced59f83c6b99,
         type: 3}
@@ -82,17 +138,17 @@ PrefabInstance:
     - target: {fileID: 9085285542889149018, guid: de22fea3b2beb5447bbced59f83c6b99,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.2
+      value: -14.5
       objectReference: {fileID: 0}
     - target: {fileID: 9085285542889149018, guid: de22fea3b2beb5447bbced59f83c6b99,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2999992
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 9085285542889149018, guid: de22fea3b2beb5447bbced59f83c6b99,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.1
+      value: -14.8
       objectReference: {fileID: 0}
     - target: {fileID: 9085285542889149018, guid: de22fea3b2beb5447bbced59f83c6b99,
         type: 3}

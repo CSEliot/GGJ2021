@@ -52,7 +52,7 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
     /// Default room options. ToDo: Support different room options.
     /// </summary>
     public RoomOptions RoomOptions = new RoomOptions() {
-        MaxPlayers = 2,
+        MaxPlayers = 100,
         CustomRoomProperties = new Hashtable() { {"GameStartTime", -1} },
         CustomRoomPropertiesForLobby = new string[] { "GameStartTime"}
     };
@@ -79,7 +79,7 @@ public class PhotonArenaManager : Singleton<PhotonArenaManager>
         }
 
         CBUG.Do("Connecting!");
-        PhotonNetwork.GameVersion = "HotelGame";
+        PhotonNetwork.GameVersion = "SnowmanGame";
 
         PhotonNetwork.NetworkingClient.AppId = PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime;
 

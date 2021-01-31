@@ -23,6 +23,8 @@ public class KatamariCollide : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         bool addComp = true;
+        bool isSnowball = gameObject.name.Contains("snow");
+        bool otherIsSnowball = collision.gameObject.name.Contains("snow");
 
         foreach (FixedJoint joint in gameObject.GetComponents<FixedJoint>())
         {
@@ -31,7 +33,32 @@ public class KatamariCollide : MonoBehaviour
 
         if (collision.gameObject.GetComponent<Rigidbody>() != null && addComp && collision.gameObject.tag == "Katamari")
         {
-            gameObject.AddComponent<FixedJoint>().connectedBody = collision.gameObject.GetComponent<Rigidbody>();
+            //don't allow non-snow things to connect
+            if(isSnowball == false && otherIsSnowball == false)
+            {
+                return;
+            }
+
+            if(isSnowball && otherIsSnowball && GetComponent<FixedJoint>() == null && collision.gameObject.GetComponent<FixedJoint>() == null)
+            {
+                gameObject.AddComponent<FixedJoint>().connectedBody = collision.gameObject.GetComponent<Rigidbody>();
+                gameObject.transform.SetParent(collision.gameObject.transform, true);
+            }
+
+            if(isSnowball == false && otherIsSnowball && GetComponent<FixedJoint>() == null)
+            {
+                gameObject.AddComponent<FixedJoint>().connectedBody = collision.gameObject.GetComponent<Rigidbody>();
+                gameObject.transform.SetParent(collision.gameObject.transform, true);
+            }
+            Destroy(Instantiate(GameObject.FindGameObjectWithTag("Game").GetComponent<Game>().GreenSphere, collision.GetContact(0).point, Quaternion.identity), 3);
+            if(rigidbody.gameObject.name.Contains("snow") == false)
+            {
+                if (rigidbody.gameObject.GetComponent<MeshCollider>() != null) {
+                    //CBUG.Do("TRIG MESH");
+                    rigidbody.gameObject.GetComponent<MeshCollider>().isTrigger = true;
+                    rigidbody.useGravity = false;
+                }
+            }
         }
     }
 }

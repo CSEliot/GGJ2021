@@ -29,6 +29,62 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: -0.00000020861624, y: -0.0000038146973, z: 0.00000023841856}
+--- !u!114 &-4330297067180044417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6933180367265841960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 1
+  m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &2398739360686482318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6933180367265841960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: -4330297067180044417}
+  - {fileID: 3916331242889185757}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &3916331242889185757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6933180367265841960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 0
 --- !u!114 &6403882656458516624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,7 +108,7 @@ PrefabInstance:
     - target: {fileID: 3767818560048002101, guid: 8dfb2e0f41f825f4db808379b291c72d,
         type: 3}
       propertyPath: m_Name
-      value: snowBallMiddle
+      value: snowBallMiddle Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3767818560048002101, guid: 8dfb2e0f41f825f4db808379b291c72d,
         type: 3}
@@ -82,17 +138,17 @@ PrefabInstance:
     - target: {fileID: 4540239375358275215, guid: 8dfb2e0f41f825f4db808379b291c72d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.18
+      value: -12.9
       objectReference: {fileID: 0}
     - target: {fileID: 4540239375358275215, guid: 8dfb2e0f41f825f4db808379b291c72d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4540239375358275215, guid: 8dfb2e0f41f825f4db808379b291c72d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.43
+      value: 12.2
       objectReference: {fileID: 0}
     - target: {fileID: 4540239375358275215, guid: 8dfb2e0f41f825f4db808379b291c72d,
         type: 3}

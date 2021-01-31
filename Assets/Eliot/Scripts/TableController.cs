@@ -15,8 +15,8 @@ public class TableController : MonoBehaviour
 
     int _sideInput = 0;
     int _forwardInput = 0;
-    float _rotForwardBack = 0;
-    float _rotSideToSide = 0;
+    public float _rotForwardBack = 0;
+    public float _rotSideToSide = 0;
 
     Queue<int> LeftPushQueue;
     Queue<int> RightPushQueue;
