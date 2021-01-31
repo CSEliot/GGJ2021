@@ -8,6 +8,7 @@ TagManager:
   - CBUG
   - Game
   - Katamari
+  - Tools
   layers:
   - Default
   - TransparentFX

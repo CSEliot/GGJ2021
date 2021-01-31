@@ -10,6 +10,9 @@ public class Game : MonoBehaviour
 {
     public GameObject GreenSphere;
     public GameObject Santa;
+    public EndScreenManager EndScreenMan;
+
+    public int ActivateSantaSeconds = 10;
 
     public bool canWin = true;
     
@@ -79,7 +82,8 @@ public class Game : MonoBehaviour
         PlayerPrefs.Save();
         CBUG.Do("Sanity check Start");
         PreGameStuff.SetActive(true);
-
+        GameWinDisplay.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -110,7 +114,7 @@ public class Game : MonoBehaviour
             if(_PM.CurrentServerUserDepth == PhotonArenaManager.ServerDepthLevel.InRoom)
             {
                 GameState = _GameState.Live;
-                Santa.SetActive(true);
+                Tools.DelayFunction(ActivateSanta, ActivateSantaSeconds);
                 if(_PM.IsHost && _PM.GetData("Setup") == null)
                 {
                     _PM.SaveData("Setup", true);
@@ -261,22 +265,36 @@ public class Game : MonoBehaviour
         SceneManager.LoadScene(activeScene, LoadSceneMode.Single);
     }
 
+
+
     [PunRPC]
     public void _DoGameWin()
     {
+        int i = 0;
+        foreach (GameObject WinObj in WinConditions)
+        {
+            EndScreenMan.SnowManPieces.Add(WinObj.transform);
+            i++;
+        }
         _PM.GetRoom().IsOpen = false;
         _PM.GetRoom().IsVisible = false;
         GameState = _GameState.Post;
         GameWinDisplay.SetActive(true);
-        SnowmanHead.GetComponent<Rigidbody>().isKinematic = true;
+        //SnowmanHead.GetComponent<Rigidbody>().isKinematic = true;
         //foreach (GameObject PhysicalObject in GameObject.FindGameObjectsWithTag("Katamari"))
         //{
         //    PhysicalObject.GetComponent<Rigidbody>().isKinematic = true;
         //}
 
-        SnowmanHead.transform.position = GameWinSnowmanPosition.transform.position;
-        SnowmanHead.transform.rotation = GameWinSnowmanPosition.transform.rotation;
-        GameWinSnowmanPosition.transform.rotation = Quaternion.Euler(0, 0, 0);
+        //SnowmanHead.transform.position = GameWinSnowmanPosition.transform.position;
+        //SnowmanHead.transform.rotation = GameWinSnowmanPosition.transform.rotation;
+        //GameWinSnowmanPosition.transform.rotation = Quaternion.Euler(0, 0, 0);
+        Tools.DelayFunction(ReloadGame, 10);
+    }
+    
+    public void ActivateSanta()
+    {
+        Santa.SetActive(true);
     }
 
     public void GotUsername()
