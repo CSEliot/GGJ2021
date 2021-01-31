@@ -1203,8 +1203,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9085285542889149018}
   - component: {fileID: 5312085975748874597}
+  - component: {fileID: 7934156276375093338}
   m_Layer: 0
-  m_Name: snowManHead 1
+  m_Name: snowManHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1217,7 +1218,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8457403566919125216}
-  m_LocalRotation: {x: -0.0123140905, y: 0.7227063, z: -0.09731125, w: 0.68415976}
+  m_LocalRotation: {x: -0.0123131275, y: 0.72270566, z: -0.09731315, w: 0.6841602}
   m_LocalPosition: {x: -0.06172488, y: 0.018067896, z: 0.08722831}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1252,6 +1253,39 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7934156276375093338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8457403566919125216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed488064829d9e4f9eba6f59cb8c0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burn: 0
+  animatorsToAffect: []
+  useList: 1
+  ignitionTargets:
+  - targetObject: {fileID: 2646315916542116279}
+    scaleModifier: 1
+    lifetimeModifier: 1
+  fireSettings:
+    lightUp: 0
+    lit: 0
+    extinguished: 0
+    simSpace: 1
+    shapeEmittPoints: 0
+    particleMaterial: {fileID: 2100000, guid: 5414faa8a17506448b08bfe8695017a1, type: 2}
+    xSprite: 4
+    ySprite: 2
+    startLifeTime: 0.5
+    startSize: 2
+    emissionRate: 100
+    maxParticles: 1000
+    gravity: 0.1
 --- !u!1 &8744751434324379671
 GameObject:
   m_ObjectHideFlags: 0
