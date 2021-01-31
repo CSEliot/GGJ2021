@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class Game : MonoBehaviour
 {
     public GameObject GreenSphere;
+    public GameObject Santa;
 
     public bool canWin = true;
     
@@ -76,7 +77,9 @@ public class Game : MonoBehaviour
         WinConditions = new List<GameObject>();
         _totalNeededWinConditions = 2;
         PlayerPrefs.Save();
-        CBUG.Do("Sanity check Start");        
+        CBUG.Do("Sanity check Start");
+        PreGameStuff.SetActive(true);
+
     }
 
     // Update is called once per frame
@@ -107,6 +110,7 @@ public class Game : MonoBehaviour
             if(_PM.CurrentServerUserDepth == PhotonArenaManager.ServerDepthLevel.InRoom)
             {
                 GameState = _GameState.Live;
+                Santa.SetActive(true);
                 if(_PM.IsHost && _PM.GetData("Setup") == null)
                 {
                     _PM.SaveData("Setup", true);
@@ -126,7 +130,7 @@ public class Game : MonoBehaviour
                         zRot = (float)_PM.GetData("TableRotZ");
                     }
                     //CBUG.Do("WHY x " + xRot + " Z " + zRot);
-                    Table.transform.rotation = Quaternion.Euler(xRot, 90f, zRot);
+                    Table.transform.rotation = Quaternion.Euler(xRot, 0f, zRot);
                     TableController._rotForwardBack = zRot;
                     TableController._rotSideToSide = xRot;
                     if (_PM.GetData("TableRotX") == null || _PM.GetData("TableRotZ") == null)
