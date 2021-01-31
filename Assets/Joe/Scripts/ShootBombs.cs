@@ -14,6 +14,7 @@ public class ShootBombs : MonoBehaviour
     void Start()
     {
         timer = 0f;
+        //gameObject.GetComponent<SantaAnimationController>().currentState = SantaAnimationController.SantaState.happy;
     }
 
     // Update is called once per frame
@@ -28,5 +29,8 @@ public class ShootBombs : MonoBehaviour
             GameObject bomb = Instantiate(projectile, gameObject.transform.position, Quaternion.identity) as GameObject;
             bomb.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
         }
+        else if (timer >= frequency - 1f) { gameObject.GetComponent<SantaAnimationController>().currentState = SantaAnimationController.SantaState.attack; }
+        else if (timer >= frequency - 3f) { gameObject.GetComponent<SantaAnimationController>().currentState = SantaAnimationController.SantaState.angry; }
+        else if (timer >= 1f) { gameObject.GetComponent<SantaAnimationController>().currentState = SantaAnimationController.SantaState.happy; }
     }
 }

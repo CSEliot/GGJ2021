@@ -983,7 +983,7 @@ PrefabInstance:
     - target: {fileID: 5672223774905356784, guid: dfb1da1c16827334e8e14653ddfba7f7,
         type: 3}
       propertyPath: m_Name
-      value: SantaPlaceholder
+      value: SantaHimself
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfb1da1c16827334e8e14653ddfba7f7, type: 3}
