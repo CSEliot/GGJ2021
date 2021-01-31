@@ -584,6 +584,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3a80f74688da5ae46b1f4bf5036634f8, type: 2}
+    - target: {fileID: 5139517743188918426, guid: 7d3a1e2002f56ef459fbb37dd07a16ab,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.56
+      objectReference: {fileID: 0}
     - target: {fileID: 5718991827043413284, guid: 7d3a1e2002f56ef459fbb37dd07a16ab,
         type: 3}
       propertyPath: m_text
@@ -663,6 +668,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColorGradient.bottomRight.r
       value: 0.1981132
+      objectReference: {fileID: 0}
+    - target: {fileID: 5933310743154471347, guid: 7d3a1e2002f56ef459fbb37dd07a16ab,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.56
       objectReference: {fileID: 0}
     - target: {fileID: 6284403670293527311, guid: 7d3a1e2002f56ef459fbb37dd07a16ab,
         type: 3}

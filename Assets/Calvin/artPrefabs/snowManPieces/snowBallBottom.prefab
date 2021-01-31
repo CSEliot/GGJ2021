@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3791594854526728457}
   - component: {fileID: 230150852806751916}
   - component: {fileID: 2654132777143517798}
+  - component: {fileID: 2402063100836193963}
   m_Layer: 0
   m_Name: snowBallBottom
   m_TagString: Untagged
@@ -79,3 +80,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2402063100836193963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4599762652056773555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed488064829d9e4f9eba6f59cb8c0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burn: 0
+  animatorsToAffect: []
+  useList: 1
+  ignitionTargets:
+  - targetObject: {fileID: 4599762652056773555}
+    scaleModifier: 1
+    lifetimeModifier: 1
+  fireSettings:
+    lightUp: 0
+    lit: 0
+    extinguished: 0
+    simSpace: 1
+    shapeEmittPoints: 0
+    particleMaterial: {fileID: 2100000, guid: 5414faa8a17506448b08bfe8695017a1, type: 2}
+    xSprite: 4
+    ySprite: 2
+    startLifeTime: 0.5
+    startSize: 0.0001
+    emissionRate: 100
+    maxParticles: 1000
+    gravity: 0.1
