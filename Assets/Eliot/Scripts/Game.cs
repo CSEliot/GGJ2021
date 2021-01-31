@@ -26,6 +26,7 @@ public class Game : MonoBehaviour
     public GameObject ForwardArrowSpawn;
     public GameObject BackArrowSpawn;
     public GameObject GameRespawn;
+    public int RandomRespawnRange;
 
     public GameObject[] WinConditions;
     int _totalNeededWinConditions;
@@ -139,20 +140,26 @@ public class Game : MonoBehaviour
             foreach(GameObject GameObj in GameObject.FindGameObjectsWithTag("Katamari"))
             {
                 float objDistance = Vector3.Distance(GameObj.transform.position, GameRespawn.transform.position);
-                if(GameObj.name.Contains("Mid"))
-                {
-                    CBUG.Log("Distance: " + objDistance);
-                }
+                
                 if((GameObj.transform.position.y < MaxBelowDistanceBeforeRespawn && objDistance > MaxDistanceBeforeRespawn )
                     || objDistance > SUPERMaxDistanceBeforeRespawn)
                 {
-                    //CBUG.Log("Teleport device: " + GameObj.name);   
-                    GameObj.GetComponent<Rigidbody>().isKinematic = true;
-                    GameObj.transform.position = GameRespawn.transform.position;
-                    GameObj.GetComponent<Rigidbody>().isKinematic = false;
+                    RespawnGameObj(GameObj);
                 }
             }
         }
+    }
+
+    public void RespawnGameObj(GameObject GameObj)
+    {
+        //CBUG.Log("Teleport device: " + GameObj.name);   
+        GameObj.GetComponent<Rigidbody>().isKinematic = true;
+        int randAdd = Random.Range(RandomRespawnRange/-2, RandomRespawnRange/2);
+        Vector3 respawnPos = new Vector3(GameRespawn.transform.position.x + randAdd,
+                                            GameRespawn.transform.position.y,
+                                            GameRespawn.transform.position.z + randAdd);
+        GameObj.transform.position = respawnPos;
+        GameObj.GetComponent<Rigidbody>().isKinematic = false;
     }
 
     public void ReloadGame()
